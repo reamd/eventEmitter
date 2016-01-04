@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="reamd">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Test</title>
+    <script src="../eventEmitter.js"></script>
+</head>
+<body>
+<script>
+var ee = new eventEmitter(),
+        funTemp = function() {
+            console.log('on complete');
+        };
+
+ee.once('done', function() {
+    console.log('once done');
+});
+ee.on('complete', funTemp);
+
+setTimeout(function() {ee.trigger('done')}, 3000);
+setTimeout(function() {ee.trigger('complete')}, 3000);
+ee.off('complete', funTemp);
+console.log(ee.get());
+console.log('on complete:',ee.get('complete'));
+
+</script>
+</body>
+</html>
