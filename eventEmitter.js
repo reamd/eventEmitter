@@ -2,9 +2,7 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
-        define('eventEmitter', ['jquery', 'uuid'], function ($, uuid) {
-            return factory;
-        });
+        define(factory);
     } else if (typeof exports === 'object') {
         // Node.js
         module.exports.eventEmitter = factory;
