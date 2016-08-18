@@ -2,7 +2,9 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD
-        define(factory);
+        define(function(){
+            return factory;
+        });
     } else if (typeof exports === 'object') {
         // Node.js
         module.exports.eventEmitter = factory;
